@@ -1,18 +1,16 @@
-package com.example.hobbyapp_utsanmp.view
+package com.example.hobbyapp_uasanmp.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
-import com.example.hobbyapp_utsanmp.R
-import com.example.hobbyapp_utsanmp.databinding.ActivityMainBinding
-import com.example.hobbyapp_utsanmp.model.Account
-import com.example.hobbyapp_utsanmp.viewmodel.ProfileViewModel
+import com.example.hobbyapp_uasanmp.R
+import com.example.hobbyapp_uasanmp.databinding.ActivityMainBinding
+import com.example.hobbyapp_uasanmp.model.Account
 
 class MainActivity : AppCompatActivity(), BottomNavigationVisibilityListener, OnDataPassListener {
     private lateinit var binding: ActivityMainBinding

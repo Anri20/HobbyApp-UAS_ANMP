@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.hobbyapp_utsanmp"
+    namespace = "com.example.hobbyapp_uasanmp"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.hobbyapp_utsanmp"
+        applicationId = "com.example.hobbyapp_uasanmp"
         minSdk = 27
         targetSdk = 34
         versionCode = 1

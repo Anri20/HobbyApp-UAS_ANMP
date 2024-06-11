@@ -1,4 +1,4 @@
-package com.example.hobbyapp_utsanmp.view
+package com.example.hobbyapp_uasanmp.view
 
 import android.content.Context
 import android.os.Bundle
@@ -11,9 +11,9 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
-import com.example.hobbyapp_utsanmp.databinding.FragmentLoginBinding
-import com.example.hobbyapp_utsanmp.util.GlobalData
-import com.example.hobbyapp_utsanmp.viewmodel.LoginViewModel
+import com.example.hobbyapp_uasanmp.databinding.FragmentLoginBinding
+import com.example.hobbyapp_uasanmp.util.GlobalData
+import com.example.hobbyapp_uasanmp.viewmodel.LoginViewModel
 
 class LoginFragment : Fragment() {
     private var _binding: FragmentLoginBinding? = null

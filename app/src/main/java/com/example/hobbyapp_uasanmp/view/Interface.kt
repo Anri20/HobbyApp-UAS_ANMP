@@ -1,6 +1,6 @@
-package com.example.hobbyapp_utsanmp.view
+package com.example.hobbyapp_uasanmp.view
 
-import com.example.hobbyapp_utsanmp.model.Account
+import com.example.hobbyapp_uasanmp.model.Account
 
 interface BottomNavigationVisibilityListener {
     fun setBottomNavigationVisibility(isVisible: Boolean)

@@ -1,17 +1,13 @@
-package com.example.hobbyapp_utsanmp.view
+package com.example.hobbyapp_uasanmp.view
 
 import android.content.Context
-import android.content.res.TypedArray
-import android.net.UrlQuerySanitizer
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.hobbyapp_utsanmp.R
-import com.example.hobbyapp_utsanmp.databinding.FragmentHobbyDetailBinding
-import com.example.hobbyapp_utsanmp.databinding.FragmentLoginBinding
+import com.example.hobbyapp_uasanmp.databinding.FragmentHobbyDetailBinding
 
 class HobbyDetailFragment : Fragment() {
     private var _binding: FragmentHobbyDetailBinding? = null

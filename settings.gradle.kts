@@ -13,5 +13,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Hobby App - UTS ANMP"
+rootProject.name = "Hobby App - UAS ANMP"
 include(":app")

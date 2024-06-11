@@ -1,4 +1,4 @@
-package com.example.hobbyapp_utsanmp.viewmodel
+package com.example.hobbyapp_uasanmp.viewmodel
 
 import android.app.Application
 import android.util.Log
@@ -8,8 +8,7 @@ import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
-import com.example.hobbyapp_utsanmp.model.Account
-import com.example.hobbyapp_utsanmp.model.Hobby
+import com.example.hobbyapp_uasanmp.model.Hobby
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 

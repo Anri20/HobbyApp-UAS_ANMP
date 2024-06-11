@@ -6,7 +6,7 @@
     app:startDestination="@id/loginFragment">
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.example.hobbyapp_utsanmp.view.RegisterFragment"
+        android:name="com.example.hobbyapp_uasanmp.view.RegisterFragment"
         android:label="Register"
         tools:layout="@layout/fragment_register">
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/itemHome"
-        android:name="com.example.hobbyapp_utsanmp.view.HobbyListFragment"
+        android:name="com.example.hobbyapp_uasanmp.view.HobbyListFragment"
         android:label="HobbyApp"
         tools:layout="@layout/fragment_hobby_list">
         <action
@@ -31,7 +31,7 @@
     </fragment>
     <fragment
         android:id="@+id/itemHistory"
-        android:name="com.example.hobbyapp_utsanmp.view.HistoryFragment"
+        android:name="com.example.hobbyapp_uasanmp.view.HistoryFragment"
         android:label="History"
         tools:layout="@layout/fragment_history" >
         <argument
@@ -40,7 +40,7 @@
     </fragment>
     <fragment
         android:id="@+id/itemProfile"
-        android:name="com.example.hobbyapp_utsanmp.view.ProfileFragment"
+        android:name="com.example.hobbyapp_uasanmp.view.ProfileFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_profile" >
         <argument
@@ -54,7 +54,7 @@
     </fragment>
     <fragment
         android:id="@+id/hobbyDetailFragment"
-        android:name="com.example.hobbyapp_utsanmp.view.HobbyDetailFragment"
+        android:name="com.example.hobbyapp_uasanmp.view.HobbyDetailFragment"
         android:label="HobbyApp"
         tools:layout="@layout/fragment_hobby_detail" >
         <argument
@@ -72,12 +72,12 @@
     </fragment>
     <fragment
         android:id="@+id/addHobbyFragment"
-        android:name="com.example.hobbyapp_utsanmp.view.AddHobbyFragment"
+        android:name="com.example.hobbyapp_uasanmp.view.AddHobbyFragment"
         android:label="Add Hobby"
         tools:layout="@layout/fragment_add_hobby" />
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.hobbyapp_utsanmp.view.LoginFragment"
+        android:name="com.example.hobbyapp_uasanmp.view.LoginFragment"
         android:label="Login"
         tools:layout="@layout/fragment_login">
         <action

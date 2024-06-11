@@ -1,4 +1,4 @@
-package com.example.hobbyapp_utsanmp.view
+package com.example.hobbyapp_uasanmp.view
 
 import android.os.Bundle
 import android.util.Log
@@ -10,16 +10,11 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
-import com.example.hobbyapp_utsanmp.R
-import com.example.hobbyapp_utsanmp.databinding.FragmentLoginBinding
-import com.example.hobbyapp_utsanmp.databinding.FragmentProfileBinding
-import com.example.hobbyapp_utsanmp.model.Account
-import com.example.hobbyapp_utsanmp.util.GlobalData
-import com.example.hobbyapp_utsanmp.util.loadImage
-import com.example.hobbyapp_utsanmp.viewmodel.ProfileViewModel
-import java.io.ByteArrayInputStream
-import java.io.ObjectInputStream
-import kotlin.properties.Delegates
+import com.example.hobbyapp_uasanmp.databinding.FragmentProfileBinding
+import com.example.hobbyapp_uasanmp.model.Account
+import com.example.hobbyapp_uasanmp.util.GlobalData
+import com.example.hobbyapp_uasanmp.util.loadImage
+import com.example.hobbyapp_uasanmp.viewmodel.ProfileViewModel
 
 class ProfileFragment : Fragment() {
     private var _binding: FragmentProfileBinding? = null

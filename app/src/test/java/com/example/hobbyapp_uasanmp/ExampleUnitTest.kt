@@ -1,4 +1,4 @@
-package com.example.hobbyapp_utsanmp
+package com.example.hobbyapp_uasanmp
 
 import org.junit.Test
 

@@ -1,4 +1,4 @@
-package com.example.hobbyapp_utsanmp.model
+package com.example.hobbyapp_uasanmp.model
 
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable

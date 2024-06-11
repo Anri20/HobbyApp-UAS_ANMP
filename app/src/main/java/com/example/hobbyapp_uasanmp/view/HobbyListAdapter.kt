@@ -1,4 +1,4 @@
-package com.example.hobbyapp_utsanmp.view
+package com.example.hobbyapp_uasanmp.view
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,9 +8,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
-import com.example.hobbyapp_utsanmp.R
-import com.example.hobbyapp_utsanmp.model.Hobby
-import com.example.hobbyapp_utsanmp.util.loadImage
+import com.example.hobbyapp_uasanmp.R
+import com.example.hobbyapp_uasanmp.model.Hobby
+import com.example.hobbyapp_uasanmp.util.loadImage
 
 class HobbyListAdapter(val hobbyList: ArrayList<Hobby>) :
     RecyclerView.Adapter<HobbyListAdapter.HobbyViewHolder>() {

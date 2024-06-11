@@ -1,9 +1,8 @@
-package com.example.hobbyapp_utsanmp.util
+package com.example.hobbyapp_uasanmp.util
 
-import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
-import com.example.hobbyapp_utsanmp.R
+import com.example.hobbyapp_uasanmp.R
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import java.lang.Exception

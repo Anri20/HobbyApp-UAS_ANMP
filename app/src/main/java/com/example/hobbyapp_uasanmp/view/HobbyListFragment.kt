@@ -1,4 +1,4 @@
-package com.example.hobbyapp_utsanmp.view
+package com.example.hobbyapp_uasanmp.view
 
 import android.content.Context
 import android.os.Bundle
@@ -10,10 +10,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.hobbyapp_utsanmp.R
-import com.example.hobbyapp_utsanmp.databinding.FragmentHobbyListBinding
-import com.example.hobbyapp_utsanmp.databinding.FragmentLoginBinding
-import com.example.hobbyapp_utsanmp.viewmodel.HobbyViewModel
+import com.example.hobbyapp_uasanmp.databinding.FragmentHobbyListBinding
+import com.example.hobbyapp_uasanmp.viewmodel.HobbyViewModel
 
 class HobbyListFragment : Fragment() {
     private var _binding: FragmentHobbyListBinding? = null

@@ -1,4 +1,4 @@
-package com.example.hobbyapp_utsanmp.view
+package com.example.hobbyapp_uasanmp.view
 
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -11,11 +11,8 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
-import com.example.hobbyapp_utsanmp.R
-import com.example.hobbyapp_utsanmp.databinding.FragmentLoginBinding
-import com.example.hobbyapp_utsanmp.databinding.FragmentRegisterBinding
-import com.example.hobbyapp_utsanmp.viewmodel.LoginViewModel
-import com.example.hobbyapp_utsanmp.viewmodel.RegisterViewModel
+import com.example.hobbyapp_uasanmp.databinding.FragmentRegisterBinding
+import com.example.hobbyapp_uasanmp.viewmodel.RegisterViewModel
 
 class RegisterFragment : Fragment() {
     private var _binding: FragmentRegisterBinding? = null
