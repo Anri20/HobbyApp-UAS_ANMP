@@ -4,50 +4,37 @@ import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import androidx.room.Room
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.hobbyapp_uasanmp.model.Hobby
+import com.example.hobbyapp_uasanmp.util.buildDb
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import kotlin.coroutines.CoroutineContext
 
-class HobbyViewModel(application: Application) : AndroidViewModel(application) {
+class HobbyViewModel(application: Application) : AndroidViewModel(application), CoroutineScope {
     val hobbyLD = MutableLiveData<ArrayList<Hobby>>()
     val hobbyLoadErrorLD = MutableLiveData<Boolean>()
-    val LoadingLD = MutableLiveData<Boolean>()
+    val loadingLD = MutableLiveData<Boolean>()
+    private var job = Job()
 
-    val TAG = "volleyTag"
-    private var queue: RequestQueue? = null
+    override val coroutineContext: CoroutineContext
+        get() = job + Dispatchers.IO
 
-    fun getHobby() {
+    fun refresh() {
+        loadingLD.value = true
         hobbyLoadErrorLD.value = false
-        LoadingLD.value = true
 
-        queue = Volley.newRequestQueue(getApplication())
-        val query = "select idhobby, hobby_img_url, title, a.username as 'writer', preview, content from hobby as h inner join account as a on a.idaccount=h.account_idaccount"
-        val url = "http://10.0.2.2/API/UTS ANMP/get_data.php?table=hobby&query=$query"
-
-        val stringRequest = StringRequest(
-            Request.Method.GET, url,
-            {
-                val sType = object : TypeToken<ArrayList<Hobby>>() {}.type
-                val result = Gson().fromJson<ArrayList<Hobby>>(it, sType)
-                hobbyLD.value = result
-//                if success, set loading progress live data to false
-                LoadingLD.value = false
-                Log.d("showvolley", result.toString())
-            },
-            {
-//                if failed, show error message, set error live data to true and progress live data to false
-                Log.d("showvolley", it.toString())
-                hobbyLoadErrorLD.value = true
-                LoadingLD.value = false
-            }
-        ).apply {
-//            this.tag = TAG
-            tag = TAG
-            queue?.add(this)
+        launch {
+            val db = buildDb(getApplication())
+            hobbyLD.postValue(db.hobbyDao().selectAllHobby())
         }
     }
 }
