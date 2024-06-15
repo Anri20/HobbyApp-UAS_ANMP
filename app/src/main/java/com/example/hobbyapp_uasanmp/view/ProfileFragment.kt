@@ -40,13 +40,13 @@ class ProfileFragment : Fragment() {
 
         account = GlobalData.account
 
-        profileViewModel.getProfile(account.idaccount.toString())
+        profileViewModel.getProfile(account.idAccount.toString())
 
         observeViewModel()
 
         binding.btnUpdate.setOnClickListener {
             profileViewModel.updateProfile(
-                account.idaccount.toString(),
+                account.idAccount.toString(),
                 binding.txtProfileNamaDepan.text.toString(),
                 binding.txtProfileNamaBelakang.text.toString(),
                 binding.txtProfileUsername.text.toString(),
@@ -55,7 +55,6 @@ class ProfileFragment : Fragment() {
             )
 
             GlobalData.account = Account(
-                account.idaccount,
                 binding.txtProfileNamaDepan.text.toString(),
                 binding.txtProfileNamaBelakang.text.toString(),
                 binding.txtProfileUsername.text.toString(),
@@ -86,8 +85,8 @@ class ProfileFragment : Fragment() {
             }
             binding.txtProfileUsername.text = it[0].username.toString()
             binding.txtProfilePassword.setText(it[0].password)
-            binding.txtProfileNamaDepan.setText(it[0].nama_depan)
-            binding.txtProfileNamaBelakang.setText(it[0].nama_belakang)
+            binding.txtProfileNamaDepan.setText(it[0].namaDepan)
+            binding.txtProfileNamaBelakang.setText(it[0].namaBelakang)
         })
     }
 

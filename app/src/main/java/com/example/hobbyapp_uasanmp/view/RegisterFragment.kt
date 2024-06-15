@@ -48,8 +48,10 @@ class RegisterFragment : Fragment() {
 
     private fun observeViewModel() {
         registerViewModel.accountLDCompare.observe(viewLifecycleOwner, Observer {
-            Log.d("showObserverVM", it.size.toString())
-            if (it.size == 0) {
+            Log.d("compare", it.toString())
+            Log.d("compare", it.size.toString())
+//            if there is no same username
+            if (it.isEmpty()) {
                 Toast.makeText(requireContext(), "your username is available", Toast.LENGTH_SHORT)
                     .show()
 
@@ -68,7 +70,7 @@ class RegisterFragment : Fragment() {
                         val password = binding.txtRegisterPassword.text.toString()
                         val imgUrl = binding.txtRegisterImgUrl.text.toString()
 
-                        Log.d("showData", "$nama_depan, $nama_belakang, $username, $password, $imgUrl")
+                        Log.d("showRegister", "$nama_depan, $nama_belakang, $username, $password, $imgUrl")
 
                         registerViewModel.register(nama_depan, nama_belakang, username, password, imgUrl)
                         // Terminate the timer

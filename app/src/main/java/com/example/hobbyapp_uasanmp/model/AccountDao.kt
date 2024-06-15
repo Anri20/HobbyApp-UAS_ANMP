@@ -13,8 +13,14 @@ interface AccountDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(account: Account)
 
+    @Query("select * from accounts")
+    suspend fun getAll(): List<Account>
+
     @Query("select * from accounts where username=:username and password=:password")
-    fun selectAccount(username: String, password: String)
+    suspend fun loginAccount(username: String, password: String): List<Account>
+
+    @Query("select * from accounts where username=:username")
+    suspend fun compare(username: String): List<Account>
 
     @Update
     suspend fun update(account: Account)

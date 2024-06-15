@@ -57,10 +57,10 @@ class HobbyListFragment : Fragment() {
 
     private fun observeViewModel() {
         hobbyViewModel.hobbyLD.observe(viewLifecycleOwner, Observer {
-            hobbyListAdapter.updateHobbyList(it)
+//            hobbyListAdapter.updateHobbyList(it)
         })
 
-        hobbyViewModel.LoadingLD.observe(viewLifecycleOwner, Observer {
+        hobbyViewModel.loadingLD.observe(viewLifecycleOwner, Observer {
             if (it == true) {
                 binding.recView.visibility = View.GONE
                 binding.progressLoad.visibility = View.VISIBLE

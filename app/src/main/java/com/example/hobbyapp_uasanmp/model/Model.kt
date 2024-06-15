@@ -16,7 +16,7 @@ data class Account(
     var username: String?,
     @ColumnInfo(name = "password")
     var password: String?,
-    @ColumnInfo(name = "imgUrl")
+    @ColumnInfo(name = "img_url")
     var imgUrl: String?
 ) : Serializable {
     @PrimaryKey(autoGenerate = true)

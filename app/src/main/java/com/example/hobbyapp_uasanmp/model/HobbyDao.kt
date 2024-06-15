@@ -13,7 +13,7 @@ interface HobbyDao {
     suspend fun insertAll(account: Account)
 
     @Query("select * from hobbies")
-    fun selectAllHobby(): ArrayList<Hobby>
+    suspend fun selectAllHobby(): List<Hobby>
 
     @Update
     suspend fun update(account: Account)

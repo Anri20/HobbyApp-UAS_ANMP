@@ -20,7 +20,7 @@ import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
 class HobbyViewModel(application: Application) : AndroidViewModel(application), CoroutineScope {
-    val hobbyLD = MutableLiveData<ArrayList<Hobby>>()
+    val hobbyLD = MutableLiveData<List<Hobby>>()
     val hobbyLoadErrorLD = MutableLiveData<Boolean>()
     val loadingLD = MutableLiveData<Boolean>()
     private var job = Job()
@@ -28,7 +28,7 @@ class HobbyViewModel(application: Application) : AndroidViewModel(application), 
     override val coroutineContext: CoroutineContext
         get() = job + Dispatchers.IO
 
-    fun refresh() {
+    fun getHobby() {
         loadingLD.value = true
         hobbyLoadErrorLD.value = false
 

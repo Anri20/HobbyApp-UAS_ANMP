@@ -10,10 +10,12 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import com.example.hobbyapp_uasanmp.databinding.FragmentLoginBinding
 import com.example.hobbyapp_uasanmp.util.GlobalData
 import com.example.hobbyapp_uasanmp.viewmodel.LoginViewModel
+import kotlinx.coroutines.launch
 
 class LoginFragment : Fragment() {
     private var _binding: FragmentLoginBinding? = null
@@ -38,6 +40,9 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         loginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
+        viewLifecycleOwner.lifecycleScope.launch {
+            loginViewModel.initializeDatabase()
+        }
 
         binding.btnLogin.setOnClickListener {
             val username = binding.txtUsername.text.toString()
