@@ -33,24 +33,6 @@ class LoginViewModel(application: Application) : AndroidViewModel(application), 
     override val coroutineContext: CoroutineContext
         get() = job + Dispatchers.IO
 
-    private suspend fun isDbReady(): Boolean {
-        return try {
-            buildDb(getApplication()).accountDao().getAll().firstOrNull() != null
-        } catch (e: Exception) {
-            false
-        }
-    }
-
-    suspend fun initializeDatabase() {
-        while (!isDbReady()) {
-            delay(1000)
-        }
-
-        launch {
-            buildDb(getApplication())
-        }
-    }
-
     fun login(username: String, password: String) {
         accountLoadErrorLD.value = false
         loadingLD.value = true

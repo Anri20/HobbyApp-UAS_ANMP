@@ -5,8 +5,9 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.hobbyapp_uasanmp.util.MIGRATION_1_2
 
-@Database(entities = [Account::class, Hobby::class], version = 1)
+@Database(entities = [Account::class, Hobby::class], version = 3)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun accountDao(): AccountDao
     abstract fun hobbyDao(): HobbyDao

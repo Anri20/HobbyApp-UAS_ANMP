@@ -10,14 +10,14 @@ import androidx.room.Update
 @Dao
 interface HobbyDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAll(account: Account)
+    suspend fun insert(hobby: Hobby)
 
     @Query("select * from hobbies")
-    suspend fun selectAllHobby(): List<Hobby>
+    suspend fun getAll(): List<Hobby>
 
     @Update
-    suspend fun update(account: Account)
+    suspend fun update(hobby: Hobby)
 
     @Delete
-    suspend fun delete(account: Account)
+    suspend fun delete(hobby: Hobby)
 }

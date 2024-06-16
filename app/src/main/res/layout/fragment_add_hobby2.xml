@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.AddHobbyFragment">
+    tools:context=".view.AddHobbyFragment2">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/imgAddHobby"
+            android:id="@+id/imgAddHobby2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
@@ -28,10 +28,10 @@
             android:text="Title"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imgAddHobby" />
+            app:layout_constraintTop_toBottomOf="@+id/imgAddHobby2" />
 
         <TextView
-            android:id="@+id/txtAddlWriter"
+            android:id="@+id/txtAddWriter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
@@ -46,11 +46,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:layout_marginBottom="32dp"
+            android:layout_marginBottom="24dp"
             android:text="Prev"
             app:icon="@drawable/baseline_arrow_back_24"
             app:iconGravity="start"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/btnDone"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
@@ -58,23 +58,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="32dp"
-            android:layout_marginBottom="32dp"
+            android:layout_marginBottom="24dp"
             android:text="Add Page"
             app:icon="@drawable/baseline_arrow_forward_24"
             app:iconGravity="end"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/btnDone"
             app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
             android:id="@+id/txtPage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="44dp"
+            android:layout_marginBottom="36dp"
             android:text="1 / 10"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/btnDone"
             app:layout_constraintEnd_toStartOf="@+id/btnAddPage"
-            app:layout_constraintHorizontal_bias="0.504"
+            app:layout_constraintHorizontal_bias="0.564"
             app:layout_constraintStart_toEndOf="@+id/btnPrevPage" />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -85,14 +85,14 @@
             android:layout_marginTop="32dp"
             android:layout_marginEnd="32dp"
             android:layout_marginBottom="32dp"
-            android:hint="txtContentAdd"
+            android:hint="Content"
             android:textAlignment="viewStart"
             app:hintAnimationEnabled="true"
             app:hintEnabled="true"
             app:layout_constraintBottom_toTopOf="@+id/txtPage"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtAddlWriter">
+            app:layout_constraintTop_toBottomOf="@+id/txtAddWriter">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txtContentAdd"
@@ -100,6 +100,18 @@
                 android:layout_height="match_parent"
                 android:textAlignment="viewStart" />
         </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btnDone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="96dp"
+            android:text="Add Hobby"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

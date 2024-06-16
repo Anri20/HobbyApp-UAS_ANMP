@@ -40,9 +40,6 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         loginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
-        viewLifecycleOwner.lifecycleScope.launch {
-            loginViewModel.initializeDatabase()
-        }
 
         binding.btnLogin.setOnClickListener {
             val username = binding.txtUsername.text.toString()
@@ -62,7 +59,8 @@ class LoginFragment : Fragment() {
     private fun observeViewModel() {
         loginViewModel.accountLD.observe(viewLifecycleOwner, Observer {
             Log.d("showObserverVM", it.size.toString())
-            if (it.size != 0) {
+//            if there is data that has the same username and password
+            if (it.isNotEmpty()) {
                 Toast.makeText(requireContext(), "Login Successful", Toast.LENGTH_SHORT).show()
 
                 GlobalData.account = it[0]

@@ -20,8 +20,8 @@ data class Account(
     var imgUrl: String?
 ) : Serializable {
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "id_account")
-    var idAccount: Int = 0
+    @ColumnInfo(name = "idaccount")
+    var idAccount: Long = 0
 }
 
 @Entity(tableName = "hobbies")
@@ -36,8 +36,10 @@ data class Hobby(
     val preview: String?,
     @ColumnInfo(name = "content")
     val content: String,
+    @ColumnInfo(name = "account_idaccount")
+    val idAccount: Long
 ) {
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "id_hobby")
-    var idHobby: Int = 0
+    @ColumnInfo(name = "idhobby")
+    var idHobby: Long = 0
 }

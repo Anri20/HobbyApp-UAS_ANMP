@@ -12,7 +12,7 @@ import com.example.hobbyapp_uasanmp.R
 import com.example.hobbyapp_uasanmp.model.Hobby
 import com.example.hobbyapp_uasanmp.util.loadImage
 
-class HobbyListAdapter(val hobbyList: ArrayList<Hobby>) :
+class HobbyListAdapter(private val hobbyList: ArrayList<Hobby>) :
     RecyclerView.Adapter<HobbyListAdapter.HobbyViewHolder>() {
     class HobbyViewHolder(var view: View) : RecyclerView.ViewHolder(view)
 

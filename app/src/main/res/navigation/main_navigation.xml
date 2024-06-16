@@ -26,8 +26,8 @@
             android:id="@+id/actionHobbyDetail"
             app:destination="@id/hobbyDetailFragment" />
         <action
-            android:id="@+id/actionAddHobby"
-            app:destination="@id/addHobbyFragment" />
+            android:id="@+id/actionAddHobby1"
+            app:destination="@id/addHobbyFragment1" />
     </fragment>
     <fragment
         android:id="@+id/itemHistory"
@@ -71,10 +71,24 @@
             app:argType="string" />
     </fragment>
     <fragment
-        android:id="@+id/addHobbyFragment"
-        android:name="com.example.hobbyapp_uasanmp.view.AddHobbyFragment"
+        android:id="@+id/addHobbyFragment2"
+        android:name="com.example.hobbyapp_uasanmp.view.AddHobbyFragment2"
         android:label="Add Hobby"
-        tools:layout="@layout/fragment_add_hobby" />
+        tools:layout="@layout/fragment_add_hobby2" >
+        <action
+            android:id="@+id/actionAddDone"
+            app:destination="@id/itemHome"
+            app:popUpTo="@id/itemHome"
+            app:popUpToInclusive="true" />
+        <argument android:name="imgUrl"
+            app:argType="string" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="preview"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.hobbyapp_uasanmp.view.LoginFragment"
@@ -90,5 +104,14 @@
             app:destination="@id/registerFragment"
             app:enterAnim="@android:anim/fade_in"
             app:exitAnim="@android:anim/fade_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/addHobbyFragment1"
+        android:name="com.example.hobbyapp_uasanmp.view.AddHobbyFragment1"
+        android:label="Add Hobby"
+        tools:layout="@layout/fragment_add_hobby1">
+        <action
+            android:id="@+id/actionAddHobby2"
+            app:destination="@id/addHobbyFragment2" />
     </fragment>
 </navigation>

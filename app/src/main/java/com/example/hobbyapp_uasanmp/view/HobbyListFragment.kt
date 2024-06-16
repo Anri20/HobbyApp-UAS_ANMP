@@ -47,8 +47,8 @@ class HobbyListFragment : Fragment() {
             hobbyViewModel.getHobby()
         }
 
-        binding.fabAddHobby.setOnClickListener{
-            val action = HobbyListFragmentDirections.actionAddHobby()
+        binding.fabAddHobby.setOnClickListener {
+            val action = HobbyListFragmentDirections.actionAddHobby1()
             Navigation.findNavController(it).navigate(action)
         }
 
@@ -57,11 +57,11 @@ class HobbyListFragment : Fragment() {
 
     private fun observeViewModel() {
         hobbyViewModel.hobbyLD.observe(viewLifecycleOwner, Observer {
-//            hobbyListAdapter.updateHobbyList(it)
+            hobbyListAdapter.updateHobbyList(it.toCollection(ArrayList()))
         })
 
         hobbyViewModel.loadingLD.observe(viewLifecycleOwner, Observer {
-            if (it == true) {
+            if (it) {
                 binding.recView.visibility = View.GONE
                 binding.progressLoad.visibility = View.VISIBLE
             } else {
