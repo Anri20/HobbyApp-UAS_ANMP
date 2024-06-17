@@ -6,8 +6,9 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.hobbyapp_uasanmp.util.MIGRATION_1_2
+import com.example.hobbyapp_uasanmp.util.MIGRATION_3_4
 
-@Database(entities = [Account::class, Hobby::class], version = 3)
+@Database(entities = [Account::class, Hobby::class], version = 4)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun accountDao(): AccountDao
     abstract fun hobbyDao(): HobbyDao
@@ -23,7 +24,7 @@ abstract class AppDatabase : RoomDatabase() {
                 AppDatabase::class.java,
                 "app_database"
             )
-                .addMigrations()
+                .addMigrations(MIGRATION_3_4)
                 .build()
 
         operator fun invoke(context: Context): AppDatabase =

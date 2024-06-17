@@ -10,9 +10,10 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hobbyapp_uasanmp.R
 import com.example.hobbyapp_uasanmp.model.Hobby
+import com.example.hobbyapp_uasanmp.model.HobbyAccount
 import com.example.hobbyapp_uasanmp.util.loadImage
 
-class HobbyListAdapter(private val hobbyList: ArrayList<Hobby>) :
+class HobbyListAdapter(private val hobbyList: ArrayList<HobbyAccount>) :
     RecyclerView.Adapter<HobbyListAdapter.HobbyViewHolder>() {
     class HobbyViewHolder(var view: View) : RecyclerView.ViewHolder(view)
 
@@ -28,23 +29,23 @@ class HobbyListAdapter(private val hobbyList: ArrayList<Hobby>) :
     }
 
     override fun onBindViewHolder(holder: HobbyViewHolder, position: Int) {
-        holder.view.findViewById<ImageView>(R.id.imgHobby).loadImage(hobbyList[position].imgUrl)
-        holder.view.findViewById<TextView>(R.id.txtTitle).text = hobbyList[position].title
-        holder.view.findViewById<TextView>(R.id.txtWriter).text = "@${hobbyList[position].writer}"
-        holder.view.findViewById<TextView>(R.id.txtPreview).text = hobbyList[position].preview
+        holder.view.findViewById<ImageView>(R.id.imgHobby).loadImage(hobbyList[position].hobby.imgUrl)
+        holder.view.findViewById<TextView>(R.id.txtTitle).text = hobbyList[position].hobby.title
+        holder.view.findViewById<TextView>(R.id.txtWriter).text = "@${hobbyList[position].account.username}"
+        holder.view.findViewById<TextView>(R.id.txtPreview).text = hobbyList[position].hobby.preview
 
         holder.view.findViewById<Button>(R.id.btnRead).setOnClickListener {
             val action = HobbyListFragmentDirections.actionHobbyDetail(
-                hobbyList[position].imgUrl.toString(),
-                hobbyList[position].title.toString(),
-                hobbyList[position].writer.toString(),
-                hobbyList[position].content
+                hobbyList[position].hobby.imgUrl.toString(),
+                hobbyList[position].hobby.title.toString(),
+                hobbyList[position].account.username.toString(),
+                hobbyList[position].hobby.content
             )
             Navigation.findNavController(it).navigate(action)
         }
     }
 
-    fun updateHobbyList(newHobbyList: ArrayList<Hobby>) {
+    fun updateHobbyList(newHobbyList: ArrayList<HobbyAccount>) {
         hobbyList.clear()
         hobbyList.addAll(newHobbyList)
         notifyDataSetChanged()

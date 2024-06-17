@@ -10,27 +10,37 @@ import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.hobbyapp_uasanmp.model.Account
+import com.example.hobbyapp_uasanmp.util.buildDb
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 import java.nio.charset.Charset
+import kotlin.coroutines.CoroutineContext
 
-class ProfileViewModel(application: Application) : AndroidViewModel(application) {
+class ProfileViewModel(application: Application) : AndroidViewModel(application), CoroutineScope {
     val profileLD = MutableLiveData<ArrayList<Account>>()
     val profileLoadErrorLD = MutableLiveData<Boolean>()
     val message = MutableLiveData<String>()
+    private var job = Job()
 
-    fun getProfile(id: String) {
+    override val coroutineContext: CoroutineContext
+        get() = job + Dispatchers.IO
 
+    fun getProfile(id: Int) {
+        profileLoadErrorLD.value = false
+
+        launch {
+            val db = buildDb(getApplication())
+            profileLD.postValue(db.accountDao().getAccount(id).toCollection(arrayListOf()))
+        }
     }
 
-    fun updateProfile(
-        id: String,
-        nama_depan: String,
-        nama_belakang: String,
-        username: String,
-        password: String,
-        imgUrl: String
-    ) {
-
+    fun updateProfile(account: Account) {
+        launch {
+            buildDb(getApplication()).accountDao().update(account)
+        }
     }
 }

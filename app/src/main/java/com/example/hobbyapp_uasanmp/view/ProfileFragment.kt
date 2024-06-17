@@ -23,6 +23,7 @@ class ProfileFragment : Fragment() {
     private lateinit var profileViewModel: ProfileViewModel
 
     private lateinit var account: Account
+    private lateinit var updateAccount: Account
 
 
     override fun onCreateView(
@@ -40,18 +41,22 @@ class ProfileFragment : Fragment() {
 
         account = GlobalData.account
 
-        profileViewModel.getProfile(account.idAccount.toString())
+        profileViewModel.getProfile(account.idAccount.toInt())
 
         observeViewModel()
 
         binding.btnUpdate.setOnClickListener {
-            profileViewModel.updateProfile(
-                account.idAccount.toString(),
+            updateAccount = Account(
                 binding.txtProfileNamaDepan.text.toString(),
                 binding.txtProfileNamaBelakang.text.toString(),
                 binding.txtProfileUsername.text.toString(),
                 binding.txtProfilePassword.text.toString(),
                 account.imgUrl.toString()
+            )
+            updateAccount.idAccount = account.idAccount
+
+            profileViewModel.updateProfile(
+                updateAccount
             )
 
             GlobalData.account = Account(
@@ -74,8 +79,8 @@ class ProfileFragment : Fragment() {
     private fun observeViewModel() {
         profileViewModel.profileLD.observe(viewLifecycleOwner, Observer {
             Log.d("showObserveVM", it.toString())
-            Log.d("imgURL", (it[0].imgUrl.toString() == "null").toString())
-            if (it[0].imgUrl != "null"){
+            Log.d("imgURL", (it[0].imgUrl.toString() == "").toString())
+            if (it[0].imgUrl != ""){
                 binding.ProfilePict.loadImage(it[0].imgUrl)
                 binding.ProfilePict.visibility = View.VISIBLE
                 binding.defaultPict.visibility = View.INVISIBLE

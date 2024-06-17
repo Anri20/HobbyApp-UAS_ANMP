@@ -46,10 +46,11 @@ val DB_NAME = "app_database"
 
 fun buildDb(context: Context): AppDatabase {
     return Room.databaseBuilder(context, AppDatabase::class.java, DB_NAME)
-        .addMigrations()
+        .addMigrations(MIGRATION_3_4)
         .build()
 }
 // DATABASE BUILDER
+
 
 // MIGRATIONS
 
@@ -61,4 +62,34 @@ val MIGRATION_1_2 = object : Migration(1, 2) {
         )
     }
 }
+
+val MIGRATION_3_4 = object : Migration(3, 4) {
+    override fun migrate(db: SupportSQLiteDatabase) {
+        db.execSQL(
+            """
+            CREATE TABLE hobbies_new (
+                idhobby INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+                hobby_img_url TEXT,
+                title TEXT,
+                preview TEXT,
+                content TEXT NOT NULL,
+                account_idaccount INTEGER NOT NULL
+            )
+        """.trimIndent()
+        )
+
+        db.execSQL(
+            """
+            INSERT INTO hobbies_new (hobby_img_url, title, preview, content, account_idaccount, idhobby)
+            SELECT hobby_img_url, title, preview, content, account_idaccount, idhobby
+            FROM hobbies
+        """.trimIndent()
+        )
+
+        db.execSQL("DROP TABLE hobbies")
+
+        db.execSQL("ALTER TABLE hobbies_new RENAME TO hobbies")
+    }
+}
+
 // MIGRATIONS

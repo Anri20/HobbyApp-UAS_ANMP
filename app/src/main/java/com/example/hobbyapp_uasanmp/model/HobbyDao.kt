@@ -15,6 +15,13 @@ interface HobbyDao {
     @Query("select * from hobbies")
     suspend fun getAll(): List<Hobby>
 
+    @Query("""
+        select h.*, a.*
+        from hobbies h
+        inner join accounts a on h.account_idaccount=a.idaccount
+    """)
+    suspend fun getHobbyAccount(): List<HobbyAccount>
+
     @Update
     suspend fun update(hobby: Hobby)
 

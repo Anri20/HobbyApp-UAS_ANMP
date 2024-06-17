@@ -1,8 +1,10 @@
 package com.example.hobbyapp_uasanmp.model
 
 import androidx.room.ColumnInfo
+import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import androidx.room.Relation
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
@@ -30,8 +32,6 @@ data class Hobby(
     val imgUrl: String?,
     @ColumnInfo(name = "title")
     val title: String?,
-    @ColumnInfo(name = "writer")
-    val writer: String?,
     @ColumnInfo(name = "preview")
     val preview: String?,
     @ColumnInfo(name = "content")
@@ -43,3 +43,17 @@ data class Hobby(
     @ColumnInfo(name = "idhobby")
     var idHobby: Long = 0
 }
+
+data class AccountWithHobbies(
+    @Embedded val account: Account,
+    @Relation(
+        parentColumn = "idaccount",
+        entityColumn = "account_idaccount"
+    )
+    val hobbies: List<Hobby>
+)
+
+data class HobbyAccount(
+    @Embedded val hobby: Hobby,
+    @Embedded val account: Account
+)

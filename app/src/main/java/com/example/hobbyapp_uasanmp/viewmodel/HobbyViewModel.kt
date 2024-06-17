@@ -10,6 +10,7 @@ import com.android.volley.RequestQueue
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.hobbyapp_uasanmp.model.Hobby
+import com.example.hobbyapp_uasanmp.model.HobbyAccount
 import com.example.hobbyapp_uasanmp.util.buildDb
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -21,7 +22,7 @@ import kotlinx.coroutines.withContext
 import kotlin.coroutines.CoroutineContext
 
 class HobbyViewModel(application: Application) : AndroidViewModel(application), CoroutineScope {
-    val hobbyLD = MutableLiveData<List<Hobby>>()
+    val hobbyLD = MutableLiveData<List<HobbyAccount>>()
     val hobbyLoadErrorLD = MutableLiveData<Boolean>()
     val loadingLD = MutableLiveData<Boolean>()
     private var job = Job()
@@ -35,7 +36,8 @@ class HobbyViewModel(application: Application) : AndroidViewModel(application), 
 
         launch {
             val db = buildDb(getApplication())
-            val hobbies = db.hobbyDao().getAll()
+            val hobbies = db.hobbyDao().getHobbyAccount()
+            Log.d("hobbyaccount", hobbies.toString())
             withContext(Dispatchers.Main){
                 hobbyLD.value = hobbies
                 loadingLD.value = false
@@ -43,13 +45,12 @@ class HobbyViewModel(application: Application) : AndroidViewModel(application), 
         }
     }
 
-    fun addHobby(imgUrl: String?, title: String, writer: String, preview: String, content: String, idAccount: Long) {
+    fun addHobby(imgUrl: String?, title: String, preview: String, content: String, idAccount: Long) {
         launch {
             buildDb(getApplication()).hobbyDao().insert(
                 Hobby(
                     imgUrl = imgUrl,
                     title = title,
-                    writer = writer,
                     preview = preview,
                     content = content,
                     idAccount = idAccount

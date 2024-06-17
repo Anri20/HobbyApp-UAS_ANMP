@@ -30,7 +30,6 @@ class AddHobbyFragment2 : Fragment() {
     private lateinit var preview: String
 
     private var content: ArrayList<String> = arrayListOf()
-    private lateinit var currContent: String
 
     private var maxPage: Int = 10
     private var currPage: Int = 1
@@ -129,7 +128,6 @@ class AddHobbyFragment2 : Fragment() {
             hobbyViewModel.addHobby(
                 imgUrl = imgUrl,
                 title = title,
-                writer = account.username.toString(),
                 preview = preview,
                 content = content.joinToString("; "),
                 idAccount = account.idAccount

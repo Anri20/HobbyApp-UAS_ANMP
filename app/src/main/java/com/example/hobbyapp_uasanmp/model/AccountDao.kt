@@ -16,6 +16,9 @@ interface AccountDao {
     @Query("select * from accounts")
     suspend fun getAll(): List<Account>
 
+    @Query("select * from accounts where idaccount=:id")
+    suspend fun getAccount(id:Int): List<Account>
+
     @Query("select * from accounts where username=:username and password=:password")
     suspend fun loginAccount(username: String, password: String): List<Account>
 
