@@ -1,9 +1,11 @@
 package com.example.hobbyapp_uasanmp.util
 
 import android.content.Context
+import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.databinding.BindingAdapter
 import androidx.room.Room
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
@@ -13,11 +15,28 @@ import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import java.lang.Exception
 
+@BindingAdapter("android:imageUrl", "android:progressBar", "android:imageView")
+fun loadImageFromUrl(
+    view: ImageView,
+    url: String?,
+    progressBar: ProgressBar,
+    imageView: ImageView?
+) {
+    view.loadImage(url, progressBar, imageView)
+}
 
-fun ImageView.loadImage(url: String? = null, progressBar: ProgressBar? = null) {
+fun ImageView.loadImage(
+    url: String? = null,
+    progressBar: ProgressBar? = null,
+    imageView: ImageView? = null
+) {
 //    if url is empty, example = ""
     if (url!!.isEmpty()) {
-        findViewById<ImageView>(R.id.imgAddHobby1).setImageResource(R.drawable.baseline_error_24)
+        if (this.id == R.id.imgAddHobby1) {
+            this.setImageResource(R.drawable.baseline_error_24)
+        } else if (imageView != null){
+            imageView.visibility = View.VISIBLE
+        }
     } else {
         Picasso.get()
             .load(url)
@@ -27,7 +46,13 @@ fun ImageView.loadImage(url: String? = null, progressBar: ProgressBar? = null) {
             .into(this, object : Callback {
                 @Override
                 override fun onSuccess() {
-//                progressBar.visibility = View.GONE
+                    if (progressBar != null) {
+                        progressBar.visibility = View.GONE
+                    }
+
+                    if (imageView != null){
+                        imageView.visibility = View.INVISIBLE
+                    }
                 }
 
                 override fun onError(e: Exception?) {
